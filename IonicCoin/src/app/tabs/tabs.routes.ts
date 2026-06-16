@@ -9,21 +9,21 @@ export const routes: Routes = [
       {
         path: 'home',
         loadComponent: () =>
-          import('../home/home.page').then((m) => m.HomePage),
+          import('../home/home.page').then(m => m.HomePage),
       },
       {
-        path: 'Historico',
+        path: 'historico',
         loadComponent: () =>
-          import('../historico/tab2.page').then((m) => m.Tab2Page),
+          import('../historico/historico.page').then(m => m.HistoricoPage),
       },
       {
-        path: 'Configuracoes',
+        path: 'configuracoes',
         loadComponent: () =>
-          import('../configuracoes/tab3.page').then((m) => m.Tab3Page),
+          import('../configuracoes/configuracoes.page').then(m => m.ConfiguracoesPage),
       },
       {
         path: '',
-        redirectTo: '/tabs/home',
+        redirectTo: 'home',
         pathMatch: 'full',
       },
     ],

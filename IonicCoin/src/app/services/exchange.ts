@@ -16,4 +16,10 @@ export class ExchangeService {
       `https://v6.exchangerate-api.com/v6/${this.apiKey}/latest/${baseCurrency}`
     );
   }
+
+  getHistoricalRates(base: string, target: string) {
+  return this.http.get(
+    `https://api.exchangerate.host/timeseries?base=${base}&symbols=${target}&days=30`
+  );
+}
 }

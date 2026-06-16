@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Conversor de Moedas</ion-title>
+    <ion-title>Ionic Coin</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,45 +8,48 @@
 
   <ion-item>
     <ion-label position="stacked">Valor</ion-label>
-    <ion-input
-      type="number"
-      [(ngModel)]="amount">
-    </ion-input>
+    <ion-input type="number" [(ngModel)]="amount"></ion-input>
   </ion-item>
 
-  <ion-item>
-    <ion-label>Origem</ion-label>
-    <ion-select [(ngModel)]="fromCurrency">
-      <ion-select-option
-        *ngFor="let currency of currencies"
-        [value]="currency">
-        {{ currency }}
-      </ion-select-option>
-    </ion-select>
-  </ion-item>
+ <ion-item>
+  <ion-label>De</ion-label>
+  <ion-select [(ngModel)]="fromCurrency">
+    <ion-select-option *ngFor="let c of currencies" [value]="c">
+      {{ c }} — {{ currencyNames[c] || 'Moeda não identificada' }}
+    </ion-select-option>
+  </ion-select>
+</ion-item>
 
-  <ion-item>
-    <ion-label>Destino</ion-label>
-    <ion-select [(ngModel)]="toCurrency">
-      <ion-select-option
-        *ngFor="let currency of currencies"
-        [value]="currency">
-        {{ currency }}
-      </ion-select-option>
-    </ion-select>
-  </ion-item>
+<ion-item>
+  <ion-label>Para</ion-label>
+  <ion-select [(ngModel)]="toCurrency">
+    <ion-select-option *ngFor="let c of currencies" [value]="c">
+      {{ c }} — {{ currencyNames[c] || 'Moeda não identificada' }}
+    </ion-select-option>
+  </ion-select>
+</ion-item>
 
-  <ion-button
-    expand="block"
-    (click)="convert()">
+  <ion-button expand="block" (click)="convert()">
     Converter
   </ion-button>
 
   <ion-card *ngIf="result">
     <ion-card-content>
       Resultado:
-      {{ result | number:'1.2-2' }}
-      {{ toCurrency }}
+      {{ result | number:'1.2-2' }} {{ toCurrency }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button color="medium" (click)="swapCurrencies()">
+    Inverter moedas
+  </ion-button>
+
+  <ion-card>
+    <ion-card-content>
+      <h2>Variação de 30 dias</h2>
+
+      <canvas #chartCanvas></canvas>
+
     </ion-card-content>
   </ion-card>
 

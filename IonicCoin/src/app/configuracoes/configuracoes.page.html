@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Configurações</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- 🧹 dados locais -->
+  <ion-card>
+    <ion-card-content>
+
+      <h2>Dados do aplicativo</h2>
+
+      <p>Gerencie histórico e preferências locais.</p>
+
+      <ion-button color="danger" expand="block" (click)="clearHistory()">
+        Limpar histórico
+      </ion-button>
+
+      <ion-button color="warning" expand="block" (click)="resetDefaults()">
+        Resetar configurações
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+  <!-- ⏱️ frequência de atualização -->
+  <ion-card>
+    <ion-card-content>
+
+      <h2>Atualização de taxas</h2>
+
+      <ion-item>
+        <ion-label>Frequência</ion-label>
+
+        <ion-select [(ngModel)]="settings.refreshRate" (ionChange)="onChangeRefresh()">
+          <ion-select-option [value]="60000">A cada 1 minuto (teste)</ion-select-option>
+          <ion-select-option [value]="3600000">A cada 1 hora</ion-select-option>
+          <ion-select-option [value]="86400000">Diariamente</ion-select-option>
+        </ion-select>
+
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+  <!-- 🔔 notificações -->
+  <ion-card>
+    <ion-card-content>
+
+      <h2>Notificações</h2>
+
+      <ion-item>
+        <ion-label>Alertar variações fortes</ion-label>
+
+        <ion-toggle
+          [(ngModel)]="settings.notifyBigChanges"
+          (ionChange)="onToggleNotify()">
+        </ion-toggle>
+
+      </ion-item>
+
+      <p style="font-size: 12px; opacity: 0.7;">
+        Notifica quando houver variações acima de 5%
+      </p>
+
+    </ion-card-content>
+  </ion-card>
+
+  <!-- ℹ️ info -->
+  <ion-card>
+    <ion-card-content>
+      <p><strong>Versão:</strong> 1.0.0</p>
+      <p>App de conversão de moedas</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
