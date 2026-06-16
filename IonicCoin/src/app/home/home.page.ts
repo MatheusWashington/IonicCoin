@@ -94,6 +94,7 @@ export class HomePage implements OnInit {
     CDF: 'Franco congolês',
     CLF: 'Unidad de Fomento chilena',
     CLP: 'Peso chileno',
+    CNH: 'Chinese Yuan (offshore)',
     COP: 'Peso colombiano',
     CRC: 'Colón costarriquenho',
     CUP: 'Peso cubano',
